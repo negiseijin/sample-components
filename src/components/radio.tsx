@@ -57,3 +57,5 @@ export const RadioGroup = (props: RadioGroupProps) => {
     </>
   );
 };
+
+export default Radio;

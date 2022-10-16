@@ -1,0 +1,18 @@
+.switch {
+  cursor: pointer;
+  user-select: none;
+
+  input[type="checkbox"] {
+    display: none;
+
+    &:checked ~ img {
+      transition: 0.5s;
+    }
+  }
+
+  label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
