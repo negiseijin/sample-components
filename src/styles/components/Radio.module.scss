@@ -1,0 +1,30 @@
+.radio {
+  cursor: pointer;
+  user-select: none;
+
+  input[type="radio"] {
+    display: none;
+
+    &:checked {
+      + label {
+        img:hover {
+          background-color: red;
+        }
+      }
+    }
+
+    &:not(checked) {
+      + label {
+        img:hover {
+          background-color: aqua;
+        }
+      }
+    }
+  }
+
+  label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
