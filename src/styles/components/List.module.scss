@@ -1,0 +1,46 @@
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.check-list {
+  cursor: pointer;
+  user-select: none;
+
+  input[type="checkbox"] {
+    display: none;
+
+    &:checked {
+      + label {
+        img:hover {
+          background-color: red;
+        }
+      }
+    }
+
+    &:not(checked) {
+      + label {
+        img:hover {
+          background-color: aqua;
+        }
+      }
+    }
+  }
+
+  label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &.left {
+      flex-flow: row-reverse;
+    }
+    &.top {
+      flex-flow: column-reverse;
+    }
+    &.bottom {
+      flex-flow: column;
+    }
+  }
+}

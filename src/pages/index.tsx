@@ -5,6 +5,7 @@ import { memo, useCallback, useState } from "react";
 import styles from "@/styles/Home.module.scss";
 import { RadioGroup } from "@/components/radio";
 import Switch from "@/components/switch";
+import { List } from "@/components/list";
 
 const Home: NextPage = () => {
   const items = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
@@ -41,6 +42,32 @@ const Home: NextPage = () => {
     );
   });
 
+  const listItems = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
+  const [list, setList] = useState([""]);
+  const handleList = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      if (e.target.checked) {
+        setList([...list, e.target.value]);
+      } else {
+        const newList = list.filter((v) => v !== e.target.value);
+        setList(newList);
+      }
+    },
+    [list]
+  );
+  const ListGroupMemo = memo(function ListGroupMemo() {
+    return (
+      <List
+        items={listItems}
+        name="list"
+        checkedValues={list}
+        className={styles.list}
+        labelPosition="left"
+        onChange={handleList}
+      />
+    );
+  });
+
   return (
     <div className={styles.container}>
       <Head>
@@ -52,6 +79,7 @@ const Home: NextPage = () => {
       <main className={styles.main}>
         <RadioGroupMemo />
         <SwitchMemo />
+        <ListGroupMemo />
       </main>
     </div>
   );
