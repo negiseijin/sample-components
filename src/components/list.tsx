@@ -44,17 +44,18 @@ type CheckListProps = {
   labelPosition: LabelPositionType;
 } & React.InputHTMLAttributes<HTMLInputElement>;
 export const CheckList = (props: CheckListProps) => {
-  const { labelPosition, id, value, checked, className } = props;
+  const { labelPosition, id, value, className } = props;
   return (
     <li className={styles["check-list"]}>
-      <input type="checkbox" {...props} />
-      <label htmlFor={id} className={styles[`${labelPosition}`]}>
-        {checked ? (
-          <Image src="/check.svg" alt="check" width={48} height={48} />
-        ) : (
-          <Image width={48} height={48} src="" alt="" />
-        )}
-        <span className={className}>{value}</span>
+      <label htmlFor={id} className={`${styles["check-box"]}`}>
+        <input type="checkbox" {...props} />
+        <span
+          className={`${styles["check-img"]} ${
+            styles[`check-img__${labelPosition}`]
+          }`}
+        >
+          <span className={className}>{value}</span>
+        </span>
       </label>
     </li>
   );
